@@ -17,7 +17,7 @@ sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.
 sudo yum install -y certbot
 
 # Instalando la versión sdkman y java
-curl -s "https://get.sdkman.io" | bash
+curl -s "https://get.sdkman.io/" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java
 
@@ -33,11 +33,15 @@ echo "Aplicacion #2" | sudo tee /var/www/html/app2/index.html
 # Una vez compiado, si es reiniciado el servicio de apache, deberá configurar los nuevos archivos creados.
 # Donde dice cambiar sustituir.
 cd ~/
-git clone https://github.com/vacax/virtualhost-proxyreverso && cd virtualhost-proxyreverso
+git clone https://github.com/jophielrivas/virtualhost-proxyreverso-Miguel && cd virtualhost-proxyreverso
 sudo cp configuraciones/*.conf /etc/httpd/conf.d/
 
 # Clonando el proyecto de Javalin-demo e iniciando la aplicación, escuchando en el puerto 7000
 cd ~/
 git clone https://github.com/vacax/javalin-demo/ && cd javalin-demo && bash start.sh &
 curl localhost:7000
+
+git clone https://github.com/jophielrivas/demo && cd demo && bash start.sh &
+curl localhost:7070
+
 echo "Script completado!..."
